@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+
+<div id="myDiagramDiv1"style="width:100%; height:600px; background-color: #fff;border: 2px solid darkgrey;"></div>
+
+<script src="js/org.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var $ = go.GraphObject.make;
+	var myDiagram =
+	  $(go.Diagram, "myDiagramDiv1",
+		{
+		  initialContentAlignment: go.Spot.Center, // center Diagram contents
+		  "undoManager.isEnabled": true, // enable Ctrl-Z to undo and Ctrl-Y to redo
+		  layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
+					{ angle: 90, layerSpacing: 20 })
+		});
+	
+	// the template we defined earlier
+	myDiagram.nodeTemplate =  // the default node template
+	$(go.Node, "Vertical",
+	  { selectionObjectName: "BODY", deletable: true,
+		width:200
+	  },
+	  // the main "BODY" consists of a RoundedRectangle surrounding nested Panels
+	  $(go.Panel, "Auto",
+		{ name: "BODY" },
+		$(go.Shape, "Rectangle",
+		  { fill:"white", stroke: "#ddd" }
+		),
+		$(go.Panel, "Auto",
+		  { margin:0,
+			width:200,
+			height:80
+		  },
+		  // the title
+		  $(go.TextBlock,
+			{ stretch: go.GraphObject.Horizontal,
+			font: "bold 12pt Verdana, sans-serif",
+			width:200,
+			height:30,
+			margin:10
+			},
+			new go.Binding("text", "name")
+		  ),
+		  $(go.TextBlock,
+			{ stretch: go.GraphObject.Horizontal,
+			font: "bold 12pt Verdana, sans-serif",
+			height:30
+			},
+			new go.Binding("text", "key")
+		  ),
+		  $(go.TextBlock,
+			{ stretch: go.GraphObject.Horizontal,
+			font: "bold 12pt Verdana, sans-serif",
+			height:30
+			},
+			new go.Binding("text", "parent")
+		  )
+		)  // end outer Vertical Panel
+	  ),  // end "BODY"  Auto Panel
+	  $(go.Panel,  // this is underneath the "BODY"
+		{ height: 15 },  // always this height, even if the TreeExpanderButton is not visible
+		$("TreeExpanderButton")
+	  )
+	);
+	  
+	myDiagram.linkTemplate =
+	  $(go.Link,
+		{ routing: go.Link.Orthogonal, corner: 5 },
+		$(go.Shape, { strokeWidth: 1, stroke: "#555" })); // the link shape
+		
+	var model = $(go.TreeModel);
+	model.nodeDataArray =
+	[
+	  { key: "1", name: "阿里巴巴集团",   source: "cat1.png" },
+	  { key: "2", parent: "1", name: "设计部",    source: "cat2.png" },
+	  { key: "3", parent: "1", name: "运营部",   source: "cat3.png" },
+	  { key: "4", parent: "3", name: "销售员", source: "cat4.png" },
+	  { key: "5", parent: "3", name: "文员",     source: "cat5.png" },
+	  { key: "6", parent: "2", name: "前端开发", source: "cat6.png" },
+	  { key: "7", parent: "2", name: "程序员", source: "cat6.png" }
+	];
+	myDiagram.model = model;
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	background: #fff8f8 !important;
+	cursor: url('../img/heart.ico'),auto;
+}
+a{
+	display: block;
+}
+a:focus, a:hover{
+	text-decoration: none !important;
+	color: #d81e06 !important;
+}
+.main{
+	width: 1000px;
+	/* height: 1000px; */
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+/* 头部 */
+.headerBox{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #FFF8F8;
+	border-bottom:1px dotted  #ebccd1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+}
+.header{
+	height: 50px;
+	width: 1000px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.headCenter{
+	width: 60%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.headLeft{
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+.xin1{
+	width: 12px;
+	margin-left: 5px;
+	margin-top: 4px;
+}
+.xin2{
+	width: 30px;
+}
+/* header选中的颜色 */
+.headActive{
+	color:#d81e06 !important;
+}
+
+#accordion{
+	color: #ba5d75;
+	margin-top:50px;
+}
+.panel-default>.panel-heading{
+	background: #ebccd1 !important;
+}
+.panel-title{
+	color: #ba5d75 !important;
+	display: flex;
+	justify-content: space-between;
+}
+
+.content{
+	margin-top:50px;
+	border: 1px solid #ebccd1;
+}
+/* header中的颜色 */
+.black{
+	color: #000;
+}

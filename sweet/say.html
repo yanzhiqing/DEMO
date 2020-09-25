@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<style type="text/css">
+			body{
+				min-height: 100vh;
+			}
+			/* i say */
+			.say{
+				padding: 15px;
+				color: #E2B5B9;
+			}
+			 .hearts{
+				    position: absolute;
+				 }
+				 .circle1{
+				    width: 20px;
+				    height: 20px;
+				    background-color: red;
+				    border-radius:100%;
+				    left: 0px;
+				    position: absolute;
+				 }
+				 .circle2{
+				    width: 20px;
+				    height: 20px;
+				    left: 14px;
+				    background-color: blue;
+				    border-radius:100%;
+				    position: absolute;
+				 }
+				 .square{
+				    width: 20px;
+				    height:20px;
+				    background-color: green;
+				    position: absolute;
+				    transform: rotate(45deg);
+				    top: 7px;
+				    left:7px;}
+		</style>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app" class="main">
+			<div class="headerBox">
+				<header class="header">
+					<div class="headLeft">
+						Sweetheart
+						<img class="xin1" src="img/xin.png" alt="">
+					</div>
+					<div class="headCenter">
+						<div >
+							<a class="black " _blank href="./index.html">首页</a>
+						</div>
+						<div >
+							<a class="black"  _blank href="./photos.html">照片墙</a>
+						</div>
+						<div >
+							<a class="black"  _blank href="./experience.html" _blank>历程</a>
+						</div>
+						<div>
+							<a class="black headActive"  _blank href="./say.html" _blank>我说</a>
+						</div>
+					</div>
+					<div>
+						<img class="xin2"  _blank src="img/xin.png" >
+					</div>
+				</header>
+			</div>
+			<div class="content">
+				<!-- 我想说 -->
+					<div id="say" class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+									I say
+							</h4>
+						</div>
+						<div  class="panel-collapse collapse in">
+							<div class="say">
+								今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！
+								今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		<script>
+			new Vue({
+			  el: '#app',
+			  data: {
+				collapseList: [1,2,3,4,5,6,7,8,8,10]
+			  },
+				methods:{
+				  jump(e){
+					  if(e==0){//首页
+						  window.open("./index.html")
+					  }else if(e==1){//照片墙
+						  window.open("./photos.html")
+					  }else if(e==2){//历程
+						  window.open("./experience.html")
+					  }else if(e==3){//我想说
+						  return
+					  }
+				  }
+				},
+			})
+		</script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript">
+			function randomHeart() {
+					//因为我们这里背景颜色是以rgb的形式设置的，并且此小demo将红色设置为255更合适
+					//故之随机生成了绿色 和 蓝色的值
+				    var g = Math.floor(Math.random() * 255);  //随机生成的颜色的值
+				    var b = Math.floor(Math.random() * 255);
+				    var heart = document.createElement("div");
+				    var circle1 = document.createElement("div");
+				    var circle2 = document.createElement("div");
+				    var square = document.createElement("div");
+				    heart.classList.add("heart");
+				    circle1.classList.add("circle1");
+				    circle2.classList.add("circle2");
+				    square.classList.add("square");
+				    circle1.style.background = "rgb(255," + g + "," + b + ")"
+				    circle2.style.background = "rgb(255," + g + "," + b + ")"
+				    square.style.background = "rgb(255," + g + "," + b + ")"
+				    heart.appendChild(circle1)
+				    heart.appendChild(circle2)
+				    heart.appendChild(square)
+				    document.body.appendChild(heart)
+				    return heart;
+			}
+			function getEndY() {
+				    return Math.random()*document.body.scrollHeight;
+				}
+				function getEndX() {
+				    return Math.random()*document.body.scrollWidth;
+				}
+				window.onload = function () {
+					    var heartDom = []; //用于存放生成的20个父dom元素
+					    var stops = []; //用于存放结束位置的x坐标，y坐标，旋转方向，当前旋转角度
+					    for (var i = 0; i < 10; i++) {
+					        heartDom.push(randomHeart())
+					        heartDom[i].style.left = getEndX() + "px";
+					        heartDom[i].style.top = getEndY() + "px";
+					        var endx =getEndX();
+					        var endy = getEndY();
+					        if (Math.random() > 0.5) {
+					       		 //x坐标，y坐标，旋转方向，当前旋转角度
+					            var stop = [endx, endy, true, 0]
+					        } else {
+					            var stop = [endx, endy, false, 0]
+					        }
+					        stops.push(stop)
+					    }
+					    //通过定时器来对小心心的位置、旋转的样式进行改变
+					    setInterval(() => {
+					        for (var i = 0; i < heartDom.length; i++) {
+					        //以下四个判断是对小心心是否到达结束位置进行判断，当小心心到达结束位置后，
+					        //重新生成新的结束位置，不断循环判断
+					            if (stops[i][0] <= parseInt(heartDom[i].style.left)) {
+					                heartDom[i].style.left = parseInt(heartDom[i].style.left) - 1 + "px";
+					                if (stops[i][0] > parseInt(heartDom[i].style.left)) {
+					                    stops[i][0] = getEndX();
+					                }
+					            } else {
+					                heartDom[i].style.left = parseInt(heartDom[i].style.left) + 1 + "px";
+					                if (stops[i][0] < parseInt(heartDom[i].style.left)) {
+					                    stops[i][0] = getEndX();
+					                }
+					            }
+					
+					            if (stops[i][1] <= parseInt(heartDom[i].style.top)) {
+					                heartDom[i].style.top = parseInt(heartDom[i].style.top) - 1 + "px";
+					                if (stops[i][1] > parseInt(heartDom[i].style.top)) {
+					                    stops[i][1] = getEndY();
+					                }
+					            } else {
+					                heartDom[i].style.top = parseInt(heartDom[i].style.top) + 1 + "px";
+					                if (stops[i][1] < parseInt(heartDom[i].style.top)) {
+					                    stops[i][1] = getEndY();
+					                }
+					            }
+					            //对小心心的旋转角度进行判断，当旋转360°以后重新将记录的角度归为0°
+					            if (stops[i][3] == 360 || stops[i][3] == -360) {
+					                stops[i][3] = 0;
+					                //用于随机生成旋转的方向
+					                if (Math.random() > 0.5) {
+					                    stops[i][2] = true;
+					                } else {
+					                    stops[i][2] = false;
+					                }
+					            }
+					            //根据旋转的方向对角度加减0.5个值
+					            if (stops[i][2]) {
+					                stops[i][3] += 0.5;
+					            } else {
+					                stops[i][3] -= 0.5;
+					            }
+					            heartDom[i].style.transform = "rotate(" + (stops[i][3]) + "deg)"
+					        }
+					    }, 20);
+					}
+		</script>
+	</body>
+</html>

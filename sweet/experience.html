@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<style type="text/css">
+			a{
+				width: 100%;
+			}
+			/* 历程样式 */
+			#accordion{
+				color: #ba5d75;
+				margin-top:50px;
+			}
+			.panel-default>.panel-heading{
+				background: #ebccd1 !important;
+			}
+			.panel-title{
+				color: #ba5d75 !important;
+				display: flex;
+				justify-content: space-between;
+			}
+			.flex{
+				display: flex;
+			}
+			.panel-body-left{
+				padding: 5px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+			}
+			.panel-body-right{
+				padding: 10px;
+				font-size: 18px;
+			}
+			.lichImgBox{
+				width: 300px;
+				height: 200px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #fff8f8;
+			}
+			.lichImg{
+				max-width: 100%;
+				max-height: 100%;
+			}
+		</style>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app" class="main">
+			<div class="headerBox">
+				<header class="header">
+					<div class="headLeft">
+						Sweetheart
+						<img class="xin1" src="img/xin.png" alt="">
+					</div>
+					<div class="headCenter">
+						<div >
+							<a class="black " _blank href="./index.html">首页</a>
+						</div>
+						<div >
+							<a class="black"  _blank href="./photos.html">照片墙</a>
+						</div>
+						<div >
+							<a class="black headActive"  _blank href="./experience.html" _blank>历程</a>
+						</div>
+						<div>
+							<a class="black"  _blank href="./say.html" _blank>我说</a>
+						</div>
+					</div>
+					<div>
+						<img class="xin2"  _blank src="img/xin.png" >
+					</div>
+				</header>
+			</div>
+			<!-- 历程 -->
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default" v-for="(item,index) of lichengList" :key="index">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" 
+							   :href=`#collapse${index}`>
+								2019-3-22
+							</a>
+						</h4>
+					</div>
+					<div :id=`collapse${index}` class="panel-collapse collapse" :class="{in:index==0}">
+						<div class="panel-body flex">
+							<div class="panel-body-left lichImgBox">
+								<img class="lichImg" :src="item.img" :data-src= "item.img" alt="">
+							</div>
+							<div class="panel-body-right">{{item.content}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			new Vue({
+			  el: '#app',
+			  data: {
+				lichengList:[],  //历程数据
+			  },
+			  created() {
+				  //页面创建时加载数据
+				  this.getList()
+			  },
+			methods:{
+			  jump(e){
+				  if(e==0){//首页
+					  window.open("./index.html")
+				  }else if(e==1){//照片墙
+					  window.open("./photos.html")
+				  }else if(e==2){//历程
+					 return
+				  }else if(e==3){//我想说
+					  window.open("./say.html")
+				  }
+			  },
+			  //获取后台数据lichengList的方法
+			  getList(){
+					this.lichengList=[{"img":"http://lorempixel.com/300/300/","content":"今天我们吃了很多好吃的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！"},
+									  {"img":"http://lorempixel.com/300/500/","content":"今天今天今天今天今天今，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！"},
+									  {"img":"http://lorempixel.com/300/200/","content":"我们我们我们我们我们的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！"},
+									  {"img":"http://lorempixel.com/500/200/","content":"吃了吃了吃了吃了吃了的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！"},
+									  {"img":"http://lorempixel.com/200/200/","content":"很多很多很多很多很多的，我们还一起做了小蛋糕，好玩又好吃，最主要的是和你在一起！"},];  
+			  },
+			},
+			})
+		</script>
+		<script type="text/javascript" src="js/common.js"></script>
+	</body>
+</html>
